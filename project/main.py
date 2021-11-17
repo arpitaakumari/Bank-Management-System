@@ -1,7 +1,9 @@
+#importing the libraries
 import pickle
 import os
 import pathlib
 
+#creating an class Account for basic functions like creation, display, updation, and deletion
 class Account :
     accNo = 0
     name = ''
@@ -45,6 +47,7 @@ class Account :
     def getDeposit(self):
         return self.deposit
     
+#basic formatting
 def intro():
     print("\t\t\t\t**********************")
     print("\t\t\t\tBANK MANAGEMENT SYSTEM")
@@ -54,23 +57,13 @@ def intro():
     print("\t\t\t\tYashraj Debnath")
     input()
 
+#create account
 def writeAccount():
     account = Account()
     account.createAccount()
     writeAccountsFile(account)
 
-def displayAll():
-    file = pathlib.Path("accounts.data")
-    if file.exists ():
-        infile = open('accounts.data','rb')
-        mylist = pickle.load(infile)
-        for item in mylist :
-            print(item.accNo," ", item.name, " ",item.type, " ",item.deposit )
-        infile.close()
-    else :
-        print("No records to display")
-        
-
+#displaying the basic account balance
 def displaySp(num): 
     file = pathlib.Path("accounts.data")
     if file.exists ():
@@ -87,6 +80,7 @@ def displaySp(num):
     if not found :
         print("No existing record with this number")
 
+#deposit and withdraw money from account
 def depositAndWithdraw(num1,num2): 
     file = pathlib.Path("accounts.data")
     if file.exists ():
@@ -117,7 +111,7 @@ def depositAndWithdraw(num1,num2):
     outfile.close()
     os.rename('newaccounts.data', 'accounts.data')
 
-    
+#deleting the account
 def deleteAccount(num):
     file = pathlib.Path("accounts.data")
     if file.exists ():
@@ -135,6 +129,7 @@ def deleteAccount(num):
         os.rename('newaccounts.data', 'accounts.data')
     print("Account is Closed")
      
+#modifiying the account
 def modifyAccount(num):
     file = pathlib.Path("accounts.data")
     if file.exists ():
@@ -159,7 +154,6 @@ def modifyAccount(num):
    
 
 def writeAccountsFile(account) : 
-    
     file = pathlib.Path("accounts.data")
     if file.exists ():
         infile = open('accounts.data','rb')
@@ -176,12 +170,12 @@ def writeAccountsFile(account) :
     
         
 # start of the program
+#main of python program
 ch=''
 num=0
 intro()
 
 while ch != 7:
-    #system("cls");
     print("\tMAIN MENU")
     print()
     print("\t1. NEW ACCOUNT")
@@ -217,3 +211,4 @@ while ch != 7:
         print("Invalid choice")
     print("\n\n")
     
+# END OF THE PROGRAM
