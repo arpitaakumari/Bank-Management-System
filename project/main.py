@@ -49,6 +49,7 @@ def intro():
     print("\t\t\t\t**********************")
     print("\t\t\t\tBANK MANAGEMENT SYSTEM")
     print("\t\t\t\t**********************")
+    print("\t\t\t\tProject by : ")
     print("\t\t\t\tYash Kumar")
     print("\t\t\t\tYash Raj Debnath")
     input()
