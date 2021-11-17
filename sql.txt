@@ -1,0 +1,119 @@
+-- create a table
+CREATE TABLE Personal
+(
+  Empno INTEGER PRIMARY KEY,
+  Name TEXT NOT NULL,
+  Dobirth date NOT NULL,
+  Nativeplace TEXT NOT NULL,
+  Hobby TEXT NOT NULL
+);
+
+-- insert some values
+INSERT INTO Personal VALUES (123, 'Amit', '23-Jan-1965', 'Delhi', 'Music');
+INSERT INTO Personal VALUES (127, 'Manoj', '12-Dec-1976', 'Mumbai', 'Writing');
+INSERT INTO Personal VALUES (124, 'Abhai', '11-Aug-1975', 'Allahabad', 'Music');
+INSERT INTO Personal VALUES (125, 'Vinod', '04-Apr-1977', 'Delhi', 'Sports');
+INSERT INTO Personal VALUES (128, 'Abhay', '10-Mar-1974', 'Mumbai', 'Gardening');
+INSERT INTO Personal VALUES (129, 'Ramesh', '28-Oct-1981', 'Pune', 'Sports');
+
+-- fetch some values
+SELECT * FROM Personal;
+
+-- create a table
+CREATE TABLE Job
+(
+  Sno INTEGER PRIMARY KEY,
+  Area TEXT NOT NULL,
+  App_date date NOT NULL,
+  Salary INTEGER NOT NULL,
+  Retd_date date NOT NULL,
+  Dept TEXT NOT NULL
+);
+
+-- insert some values
+INSERT INTO Job VALUES (123, 'Agra', '25-Jan-2006', '5000', '25-Jan-2026', 'Marketing');
+INSERT INTO Job VALUES (127, 'Mathura', '22-Dec-2006', '6000', '22-Dec-2026', 'Finance');
+INSERT INTO Job VALUES (124, 'Agra', '19-Aug-2007', '5500', '19-Aug-2027', 'Marketing');
+INSERT INTO Job VALUES (125, 'Delhi', '14-Apr-2004', '8500', '14-Apr-2018', 'Sales');
+INSERT INTO Job VALUES (128, 'Pune', '13-Mar-2008', '7500', '13-Mar-2028', 'Sales');
+
+-- fetch some values
+SELECT * FROM Job;
+
+
+--1
+SELECT Area, COUNT(*)
+FROM Job
+GROUP BY Area;
+
+--2
+SELECT Nativeplace, Hobby
+FROM Personal
+WHERE Name = 'Abhay';
+
+--3
+Select j.Salary*(1.05) 
+from Personal p, Job j
+where p.Empno=j.Sno 
+and p.Hobby='Music';
+
+--4
+SELECT Hobby, COUNT(*)
+FROM Personal
+GROUP BY Hobby;
+
+--5
+SELECT p.Nativeplace, j.App_date
+FROM Personal p, Job j
+WHERE p.Empno=j.Sno 
+AND (p.Name like 'A%' or p.Name like '%d');
+
+--6
+SELECT COUNT(DISTINCT Nativeplace)
+FROM Personal;
+
+--7
+SELECT AVG(j.Salary)
+FROM Personal p, Job j
+WHERE p.Empno=j.Sno 
+AND (p.Nativeplace='Agra' OR p.Nativeplace='Delhi');
+
+--8
+SELECT Name
+FROM Personal
+WHERE [Dobirth] = (select min([Dobirth]) from Personal);
+
+--9
+SELECT Salary
+FROM Job
+WHERE (Retd_Date>'01-Jan-2006');
+
+--10
+SELECT p.Empno, p.Nativeplace, j.App_date, j.Dept
+FROM Personal p, Job j
+WHERE p.Empno=j.Sno;
+
+--11
+ALTER TABLE Job
+ADD email TEXT;
+
+--12 --dont know how to do
+SELECT *
+FROM Personal p, Job j
+WHERE ((j.App_date - j.Retd_Date)>15);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

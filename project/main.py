@@ -45,17 +45,13 @@ class Account :
     def getDeposit(self):
         return self.deposit
     
-
 def intro():
     print("\t\t\t\t**********************")
     print("\t\t\t\tBANK MANAGEMENT SYSTEM")
     print("\t\t\t\t**********************")
-
     print("\t\t\t\tYash Kumar")
     print("\t\t\t\tYash Raj Debnath")
     input()
-
-
 
 def writeAccount():
     account = Account()
@@ -209,7 +205,7 @@ while ch != 8:
         num = int(input("\tEnter The account No. : "))
         modifyAccount(num)
     elif ch == '8':
-        print("\tThanks for using Bank Managemnt System developed by Yash Kumar and YashRaj Debnath")
+        print("\tThanks for using Bank Management System developed by Yash Kumar and YashRaj Debnath")
         break
     else :
         print("Invalid choice")
