@@ -180,7 +180,7 @@ ch=''
 num=0
 intro()
 
-while ch != 8:
+while ch != 7:
     #system("cls");
     print("\tMAIN MENU")
     print()
@@ -188,10 +188,9 @@ while ch != 8:
     print("\t2. DEPOSIT AMOUNT")
     print("\t3. WITHDRAW AMOUNT")
     print("\t4. BALANCE ENQUIRY")
-    print("\t5. ALL ACCOUNT HOLDER LIST")
-    print("\t6. CLOSE AN ACCOUNT")
-    print("\t7. MODIFY AN ACCOUNT")
-    print("\t8. EXIT")
+    print("\t5. CLOSE AN ACCOUNT")
+    print("\t6. MODIFY AN ACCOUNT")
+    print("\t7. EXIT")
     print("\tSelect Your Option (1-8) ")
     ch = input()
     if ch == '1':
@@ -206,14 +205,12 @@ while ch != 8:
         num = int(input("\tEnter The account No. : "))
         displaySp(num)
     elif ch == '5':
-        displayAll();
-    elif ch == '6':
         num =int(input("\tEnter The account No. : "))
         deleteAccount(num)
-    elif ch == '7':
+    elif ch == '6':
         num = int(input("\tEnter The account No. : "))
         modifyAccount(num)
-    elif ch == '8':
+    elif ch == '7':
         print("\tThanks for using Bank Management System developed by Yash Kumar and YashRaj Debnath\n\n")
         break
     else :
