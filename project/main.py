@@ -51,7 +51,7 @@ def intro():
     print("\t\t\t\t**********************")
     print("\t\t\t\tProject by : ")
     print("\t\t\t\tYash Kumar")
-    print("\t\t\t\tYash Raj Debnath")
+    print("\t\t\t\tYashraj Debnath")
     input()
 
 def writeAccount():
@@ -211,7 +211,7 @@ while ch != 7:
         num = int(input("\tEnter The account No. : "))
         modifyAccount(num)
     elif ch == '7':
-        print("\tThanks for using Bank Management System developed by Yash Kumar and YashRaj Debnath\n\n")
+        print("\tThanks for using Bank Management System developed by Yash Kumar and Yashraj Debnath\n\n")
         break
     else :
         print("Invalid choice")
