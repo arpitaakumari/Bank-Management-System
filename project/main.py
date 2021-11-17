@@ -11,7 +11,7 @@ class Account :
     def createAccount(self):
         self.accNo= int(input("Enter the account no : "))
         self.name = input("Enter the account holder name : ")
-        self.type = input("Ente the type of account [C for Current/S for Savings] : ")
+        self.type = input("Enter the type of account [C for Current/S for Savings] : ")
         self.deposit = int(input("Enter The Initial amount(>=500 for Saving and >=1000 for current) : "))
         print("\n\n\nAccount Created")
     
@@ -99,13 +99,16 @@ def depositAndWithdraw(num1,num2):
                 if num2 == 1 :
                     amount = int(input("Enter the amount to deposit : "))
                     item.deposit += amount
-                    print("Your account is updted")
+                    print("Money deposited in your account")
                 elif num2 == 2 :
                     amount = int(input("Enter the amount to withdraw : "))
                     if amount <= item.deposit :
                         item.deposit -=amount
+                        print("Money withdrawn successfully from your account")
                     else :
-                        print("You cannot withdraw larger amount")
+                        print("Insufficient Balance")
+            else:
+                print("No such account number exists.")
                 
     else :
         print("No records to Search")
@@ -130,6 +133,7 @@ def deleteAccount(num):
         pickle.dump(newlist, outfile)
         outfile.close()
         os.rename('newaccounts.data', 'accounts.data')
+    print("Account is Closed")
      
 def modifyAccount(num):
     file = pathlib.Path("accounts.data")
@@ -140,14 +144,18 @@ def modifyAccount(num):
         os.remove('accounts.data')
         for item in oldlist :
             if item.accNo == num :
-                item.name = input("Enter the account holder name : ")
-                item.type = input("Enter the account Type : ")
-                item.deposit = int(input("Enter the Amount : "))
+                item.name = input("Enter the new account holder name : ")
+                item.type = input("Enter the new account Type : ")
+                item.deposit = int(input("Enter the new Amount : "))
+            else:
+                print("No such account number exists")
+                print("Please enter the current account number")
         
         outfile = open('newaccounts.data','wb')
         pickle.dump(oldlist, outfile)
         outfile.close()
         os.rename('newaccounts.data', 'accounts.data')
+    print("Account is modified")
    
 
 def writeAccountsFile(account) : 
@@ -206,9 +214,9 @@ while ch != 8:
         num = int(input("\tEnter The account No. : "))
         modifyAccount(num)
     elif ch == '8':
-        print("\tThanks for using Bank Management System developed by Yash Kumar and YashRaj Debnath")
+        print("\tThanks for using Bank Management System developed by Yash Kumar and YashRaj Debnath\n\n")
         break
     else :
         print("Invalid choice")
+    print("\n\n")
     
-    ch = input("Enter your choice : ")
